@@ -5,3 +5,5 @@
 /.settings
 /.project
 **/*.class
+*.iml
+.idea/

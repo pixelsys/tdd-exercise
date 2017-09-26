@@ -3,8 +3,7 @@ package tddmicroexercises.telemetrysystem;
 import java.util.Objects;
 import java.util.Random;
 
-public class TelemetryClient
-{
+public class TelemetryClient {
     //
     // The communication with the server is simulated in this implementation.
     // Because the focus of the exercise is on the other class.
@@ -18,15 +17,12 @@ public class TelemetryClient
     private final Random connectionEventsSimulator = new Random();
     private final Random randomMessageSimulator = new Random();
 
-    public boolean getOnlineStatus()
-    {
+    public boolean getOnlineStatus() {
         return onlineStatus;
     }
 
-    public void connect(String telemetryServerConnectionString)
-    {
-        if (telemetryServerConnectionString == null || "".equals(telemetryServerConnectionString))
-        {
+    public void connect(String telemetryServerConnectionString) {
+        if (telemetryServerConnectionString == null || "".equals(telemetryServerConnectionString)) {
             throw new IllegalArgumentException();
         }
 
@@ -36,35 +32,28 @@ public class TelemetryClient
         onlineStatus = success;
     }
 
-    public void disconnect()
-    {
+    public void disconnect() {
         onlineStatus = false;
     }
 
-    public void send(String message)
-    {
-        if (message == null || "".equals(message))
-        {
+    public void send(String message) {
+        if (message == null || "".equals(message)) {
             throw new IllegalArgumentException();
         }
 
         // The simulation of Send() actually just remember if the last message sent was a diagnostic message.
         // This information will be used to simulate the Receive(). Indeed there is no real server listening.
-        if (message.equals( DIAGNOSTIC_MESSAGE))
-        {
+        if (message.equals(DIAGNOSTIC_MESSAGE)) {
             diagnosticMessageJustSent = true;
-        } else
-        {
+        } else {
             diagnosticMessageJustSent = false;
         }
     }
 
-    public String receive()
-    {
+    public String receive() {
         String message;
 
-        if (diagnosticMessageJustSent)
-        {
+        if (diagnosticMessageJustSent) {
             // Simulate the reception of the diagnostic message
             message = "LAST TX rate................ 100 MBPS\r\n" //
                     + "HIGHEST TX rate............. 100 MBPS\r\n" //
@@ -82,13 +71,11 @@ public class TelemetryClient
                     + "Remote Rtrn Count........... 00";
 
             diagnosticMessageJustSent = false;
-        } else
-        {
+        } else {
             // Simulate the reception of a response message returning a random message.
             message = "";
             int messageLength = randomMessageSimulator.nextInt(50) + 60;
-            for (int i = messageLength; i > 0; --i)
-            {
+            for (int i = messageLength; i > 0; --i) {
                 message += (char) randomMessageSimulator.nextInt(40) + 86;
             }
         }

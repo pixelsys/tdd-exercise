@@ -2,8 +2,7 @@ package tddmicroexercises.telemetrysystem.somedependencies;
 
 import tddmicroexercises.telemetrysystem.TelemetryDiagnosticControls;
 
-public class TelemetryDiagnosticControlsClient2
-{
+public class TelemetryDiagnosticControlsClient2 {
     // A class with the only goal of simulating a dependency on TelemetryDiagnosticControls
     // that has impact on the refactoring.
 
