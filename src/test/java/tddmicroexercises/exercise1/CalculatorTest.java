@@ -5,5 +5,8 @@ import org.junit.Test;
 public class CalculatorTest {
 
     @Test
-    public void
+    public void myTest() {
+        assert(3 == 3);
+    }
+
 }
