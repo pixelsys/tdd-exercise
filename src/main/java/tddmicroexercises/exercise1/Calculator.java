@@ -6,6 +6,9 @@ import java.util.List;
 public class Calculator {
 
     public Double calculator(String op, List<Integer> input) {
+    		if(null == input) {
+    			throw new IllegalArgumentException("Invalid input: " + input);
+    		}
         if("sum".equals(op)) {
             double acc = 0.0;
             for(int i = 0; i < input.size(); ++i) {
@@ -16,7 +19,7 @@ public class Calculator {
             double sum = calculator("sum", input);
             return sum / input.size();
         }
-        return null;
+        throw new IllegalArgumentException("Invalid op: " + op);          
     }
 
     public static void main(String[] args) {
